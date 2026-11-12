@@ -113,14 +113,6 @@ def _sanitize_one(key: str, anim, note) -> dict | None:
         else:
             bones = None
 
-    has_effects = any(
-        isinstance(anim.get(k), dict) and anim.get(k)
-        for k in ("particle_effects", "sound_effects")
-    )
-    if not bones and not has_effects:
-        note(f"animación {key}: sin huesos ni efectos; se omite")
-        return None
-
     out: dict = {}
     if "loop" in anim:
         loop = anim["loop"]
@@ -139,9 +131,6 @@ def _sanitize_one(key: str, anim, note) -> dict | None:
                 clean_bones[bname] = cb
         if clean_bones:
             out["bones"] = clean_bones
-        elif not has_effects:
-            note(f"animación {key}: huesos sin canales válidos; se omite")
-            return None
 
     for k in _ANIM_EXTRA_KEYS:
         if k in anim and isinstance(anim[k], (dict, list, bool, int, float, str)):
@@ -150,8 +139,20 @@ def _sanitize_one(key: str, anim, note) -> dict | None:
                 sanitized_effects = _sanitize_particle_effects(anim[k], note)
                 if sanitized_effects:
                     out[k] = sanitized_effects
+            elif k == "sound_effects":
+                if isinstance(anim[k], dict) and anim[k]:
+                    out[k] = anim[k]
             else:
                 out[k] = anim[k]
+
+    has_bones = isinstance(out.get("bones"), dict) and bool(out.get("bones"))
+    has_effects = any(
+        isinstance(out.get(k), dict) and out.get(k)
+        for k in ("particle_effects", "sound_effects")
+    )
+    if not has_bones and not has_effects:
+        note(f"animación {key}: sin huesos ni efectos tras sanitización; se omite")
+        return None
 
     length = _as_float(anim.get("animation_length"))
     if length is None or length <= 0:

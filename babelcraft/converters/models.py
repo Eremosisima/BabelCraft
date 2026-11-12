@@ -598,7 +598,7 @@ def convert(ctx) -> None:
 
         key = slug(f"{ns}_{name}")
         writer.rp_json(f"models/entity/{key}.geo.json", geo)
-        writer.rp_json(f"animations/{key}.animation.json", attachable_animation_doc(ns, key, resolved.get("display") or {}))
+        writer.rp_json(f"animations/{key}.attachable.animation.json", attachable_animation_doc(ns, key, resolved.get("display") or {}))
         writer.rp_json(f"attachables/{key}.attachable.json", attachable_doc(ns, ident, key, tex_rpath, geometry_id, controller))
         if not wrote_controller:
             writer.rp_json(f"render_controllers/{ns}_item.render_controllers.json", item_render_controller(controller))

@@ -133,6 +133,7 @@ def build_merged_source() -> Path:
     print(f"  [base] assets={base_stats['assets']} data={base_stats['data']}")
 
     rp_dir = PACK_DIR / "overrides" / "resourcepacks"
+    dl_rp_dir = PACK_DIR / "downloads" / "resourcepacks"
     print(f"\nResource packs (overlays): {rp_dir}")
     for name in RESOURCEPACK_ORDER:
         p = rp_dir / name
@@ -143,6 +144,7 @@ def build_merged_source() -> Path:
         print(f"  [rp] {name}: assets={st.get('assets',0)}")
 
     dp_dir = PACK_DIR / "overrides" / "datapacks"
+    dl_dp_dir = PACK_DIR / "downloads" / "datapacks"
     print(f"\nDatapacks (overlays): {dp_dir}")
     for rel in DATAPACK_ORDER:
         p = dp_dir / rel
@@ -166,6 +168,37 @@ def build_merged_source() -> Path:
         st = _extract_overlay_zip(p, MERGED_DIR, ("data",))
         if st.get("data", 0):
             print(f"  [dp-extra] {rel}: data={st.get('data',0)}")
+
+    # Overlays descargados (modrinth index), aplicados al final para maximizar cobertura.
+    if dl_rp_dir.exists():
+        print(f"\nResource packs descargados (overlays): {dl_rp_dir}")
+        for p in sorted(dl_rp_dir.glob("*.zip")):
+            st = _extract_overlay_zip(p, MERGED_DIR, ("assets",))
+            if st.get("assets", 0):
+                print(f"  [rp-dl] {p.name}: assets={st.get('assets',0)}")
+    if dl_dp_dir.exists():
+        print(f"\nDatapacks descargados (overlays): {dl_dp_dir}")
+        for p in sorted(dl_dp_dir.rglob("*.zip")):
+            st = _extract_overlay_zip(p, MERGED_DIR, ("data",))
+            if st.get("data", 0):
+                rel = str(p.relative_to(dl_dp_dir)).replace("\\", "/")
+                print(f"  [dp-dl] {rel}: data={st.get('data',0)}")
+
+    # Mods descargados: intentar extraer assets/data declarativos (mejor esfuerzo).
+    dl_mods_dir = PACK_DIR / "downloads" / "mods"
+    if dl_mods_dir.exists():
+        print(f"\nMods descargados (assets/data extra): {dl_mods_dir}")
+        for p in sorted(dl_mods_dir.glob("*.jar")):
+            try:
+                with zipfile.ZipFile(p) as z:
+                    has_content = any(n.startswith(("assets/", "data/")) for n in z.namelist())
+                if not has_content:
+                    continue
+                st = _extract_overlay_zip(p, MERGED_DIR, ("assets", "data"))
+                if st.get("assets", 0) or st.get("data", 0):
+                    print(f"  [mod-dl] {p.name}: assets={st.get('assets',0)} data={st.get('data',0)}")
+            except Exception as e:
+                print(f"  [mod-dl-skip] {p.name}: {e}")
 
     # Metadatos explícitos para que BabelCraft detecte la identidad correcta
     # (el merge incluye datapacks de otros namespaces que pueden confundir la detección).
