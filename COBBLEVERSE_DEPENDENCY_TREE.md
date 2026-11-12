@@ -1,0 +1,567 @@
+# Cobbleverse Pack - Árbol de dependencias y elementos a traducir
+
+- Nombre: COBBLEVERSE
+- Versión: 1.7.40
+- Game: minecraft
+- Dependencias de plataforma: {"minecraft": "1.21.1", "fabric-loader": "0.18.4"}
+- Total archivos declarados en índice: 165
+
+## Resumen por tipo (modrinth.index.json)
+- **mods**: 133 archivos
+- **resourcepacks**: 30 archivos
+- **datapacks**: 1 archivos
+- **shaderpacks**: 1 archivos
+
+## Mods (índice)
+- mods/Controlling-fabric-1.21.1-19.0.5.jar | env={'client': 'required', 'server': 'required'}
+- mods/geckolib-fabric-1.21.1-4.9.2.jar | env={'server': 'required', 'client': 'required'}
+- mods/CobbleDollars-fabric-2.0.0+Beta-5.1+1.21.1.jar | env={'server': 'required', 'client': 'required'}
+- mods/CobbleFurnies-fabric-1.2.jar | env={'client': 'required', 'server': 'required'}
+- mods/cobblecuisine-2.0.1-1.7.rc1.jar | env={'server': 'required', 'client': 'required'}
+- mods/musicnotification-fabric-3.0.0+mc1.21.1.jar | env={'server': 'required', 'client': 'required'}
+- mods/LegendaryMonuments-Cobbleverse.jar | env={'server': 'required', 'client': 'required'}
+- mods/huge-structure-blocks-fabric-1.1.6.jar | env={'server': 'required', 'client': 'required'}
+- mods/fightorflight-fabric-0.10.9.jar | env={'client': 'required', 'server': 'required'}
+- mods/krypton-0.2.8.jar | env={'client': 'required', 'server': 'required'}
+- mods/rechiseled-1.2.5-fabric-mc1.21.jar | env={'server': 'required', 'client': 'required'}
+- mods/sodium-fabric-0.8.12+mc1.21.1.jar | env={'server': 'required', 'client': 'required'}
+- mods/Cobblemon-fabric-1.7.3+1.21.1.jar | env={'client': 'required', 'server': 'required'}
+- mods/Platform-fabric-1.21.1-1.3.3.jar | env={'server': 'required', 'client': 'required'}
+- mods/VanillaBackport-fabric-1.21.1-1.1.7.10.jar | env={'client': 'required', 'server': 'required'}
+- mods/Iceberg-1.21.1-fabric-1.3.2.jar | env={'client': 'required', 'server': 'required'}
+- mods/entityculling-fabric-1.10.5-mc1.21.1.jar | env={'client': 'required', 'server': 'required'}
+- mods/LumyMon-0.6.6.jar | env={'client': 'required', 'server': 'required'}
+- mods/fzzy_config-0.7.6+1.21.jar | env={'server': 'required', 'client': 'required'}
+- mods/EuphoriaPatcher-1.9.3-r5.8.1-fabric.jar | env={'client': 'required', 'server': 'required'}
+- mods/villagerconfig-fabric-4.5.4+1.21.1.jar | env={'client': 'required', 'server': 'required'}
+- mods/cobblemon-battle-extras-fabric-1.13.45.jar | env={'server': 'required', 'client': 'required'}
+- mods/tooltipfix-1.1.1-1.20.jar | env={'client': 'required', 'server': 'required'}
+- mods/infinite-music-0.4.6.jar | env={'server': 'required', 'client': 'required'}
+- mods/trinkets-3.10.0.jar | env={'client': 'required', 'server': 'required'}
+- mods/Ping-Wheel-1.12.2-fabric-1.21.1.jar | env={'client': 'required', 'server': 'required'}
+- mods/notenoughcrashes-fabric-4.4.9+1.21.1.jar | env={'server': 'required', 'client': 'required'}
+- mods/particular-1.1.2+1.21.jar | env={'client': 'required', 'server': 'required'}
+- mods/ResourcePackOverrides-v21.1.0-1.21.1-Fabric.jar | env={'server': 'required', 'client': 'required'}
+- mods/zamega-fabric-1.7.3.jar | env={'client': 'required', 'server': 'required'}
+- mods/supermartijn642configlib-1.1.8-fabric-mc1.21.jar | env={'client': 'required', 'server': 'required'}
+- mods/BetterF1-Fabric-1.1+1.21.7.jar | env={'client': 'required', 'server': 'required'}
+- mods/highlight-fabric-1.21-3.0.0.jar | env={'client': 'required', 'server': 'required'}
+- mods/konkrete_fabric_1.9.9_MC_1.21.jar | env={'client': 'required', 'server': 'required'}
+- mods/SafePastures-1.1.1+1.21.1.jar | env={'client': 'required', 'server': 'required'}
+- mods/pastureLoot-1.0.5+1.21.1.jar | env={'server': 'required', 'client': 'required'}
+- mods/rctapi-fabric-1.21.1-0.15.2-beta.jar | env={'server': 'required', 'client': 'required'}
+- mods/supermartijn642corelib-1.1.21-fabric-mc1.21.jar | env={'server': 'required', 'client': 'required'}
+- mods/pokeblocks-1.4.0-1.21.1.jar | env={'server': 'required', 'client': 'required'}
+- mods/xaerominimap-fabric-1.21.1-26.2.0.jar | env={'client': 'required', 'server': 'required'}
+- mods/toms_storage_fabric-1.21-2.3.0.jar | env={'client': 'required', 'server': 'required'}
+- mods/particle_core-0.3.3+1.21.jar | env={'server': 'required', 'client': 'required'}
+- mods/balm-fabric-1.21.1-21.0.62.jar | env={'client': 'required', 'server': 'required'}
+- mods/catchindicator-fabric-1.7.0.jar | env={'client': 'required', 'server': 'required'}
+- mods/c2me-fabric-mc1.21.1-0.4.0-alpha.0.16.jar | env={'server': 'required', 'client': 'required'}
+- mods/StackDeobfuscatorFabric-1.4.3+08e71cc.jar | env={'client': 'required', 'server': 'required'}
+- mods/modernfix-fabric-5.25.1+mc1.21.1.jar | env={'server': 'required', 'client': 'required'}
+- mods/moreculling-fabric-1.21.1-1.0.8.jar | env={'server': 'required', 'client': 'required'}
+- mods/libjf-3.17.5.jar | env={'server': 'required', 'client': 'required'}
+- mods/globalpacks-fabric-1.21.1-21.0.6.jar | env={'server': 'required', 'client': 'required'}
+- mods/Debugify-1.21.1+1.0.jar | env={'server': 'required', 'client': 'required'}
+- mods/particlerain-4.0.0-beta.10+1.21.1-fabric.jar | env={'server': 'required', 'client': 'required'}
+- mods/modmenu-11.0.4.jar | env={'server': 'required', 'client': 'required'}
+- mods/yet_another_config_lib_v3-3.8.2+1.21.1-fabric.jar | env={'server': 'required', 'client': 'required'}
+- mods/ferritecore-7.0.3-fabric.jar | env={'client': 'required', 'server': 'required'}
+- mods/BetterThirdPerson-Fabric-1.21-1.9.0.jar | env={'server': 'required', 'client': 'required'}
+- mods/CobbleverseBadges-1.3.jar | env={'server': 'required', 'client': 'required'}
+- mods/BadOptimizations-2.4.1-1.21.1.jar | env={'server': 'required', 'client': 'required'}
+- mods/soundsbegone-fabric-1.5.2+mc1.21.jar | env={'client': 'required', 'server': 'required'}
+- mods/catchrate-display-fabric-2.8.22.jar | env={'client': 'required', 'server': 'required'}
+- mods/handcrafted-fabric-1.21.1-4.0.3.jar | env={'client': 'required', 'server': 'required'}
+- mods/playerxp-fabric-1.0.9+1.21.1.jar | env={'client': 'required', 'server': 'required'}
+- mods/fancymenu_fabric_3.9.6_MC_1.21.1.jar | env={'client': 'required', 'server': 'required'}
+- mods/interactic-0.2.3+1.21.jar | env={'client': 'required', 'server': 'required'}
+- mods/sophisticatedstorage-1.21.1-1.3.7.9.139.jar | env={'server': 'required', 'client': 'required'}
+- mods/rctmod-fabric-1.21.1-0.18.1-beta.jar | env={'server': 'required', 'client': 'required'}
+- mods/continuity-3.0.0+1.21.jar | env={'server': 'required', 'client': 'required'}
+- mods/defaultoptions-fabric-1.21.1-21.1.7.jar | env={'client': 'required', 'server': 'required'}
+- mods/comforts-fabric-9.0.5+1.21.1.jar | env={'server': 'required', 'client': 'required'}
+- mods/nethermap-4.0.0-1.21.1.jar | env={'client': 'required', 'server': 'required'}
+- mods/sophisticatedcore-1.21.1-1.2.9.21.168.jar | env={'server': 'required', 'client': 'required'}
+- mods/waystones-fabric-1.21.1-21.1.36.jar | env={'server': 'required', 'client': 'required'}
+- mods/betterbeds-fabric-1.4.0.jar | env={'client': 'required', 'server': 'required'}
+- mods/MoreCobblemonTweaks-fabric-1.3.3.jar | env={'client': 'required', 'server': 'required'}
+- mods/cloth-config-15.0.140-fabric.jar | env={'client': 'required', 'server': 'required'}
+- mods/mega_showdown-fabric-1.8.4+1.7.3+1.21.1.jar | env={'client': 'required', 'server': 'required'}
+- mods/paginatedadvancements-2.5.1.jar | env={'client': 'required', 'server': 'required'}
+- mods/reeses-sodium-options-fabric-2.2.3+mc1.21.1.jar | env={'client': 'required', 'server': 'required'}
+- mods/sophisticatedbackpacks-1.21.1-3.23.4.3.106.jar | env={'client': 'required', 'server': 'required'}
+- mods/capturexp-fabric-1.7.3-1.3.0.jar | env={'client': 'required', 'server': 'required'}
+- mods/timcore-fabric-1.7.3-1.32.0.jar | env={'server': 'required', 'client': 'required'}
+- mods/LumyREI-1.1.3.jar | env={'client': 'required', 'server': 'required'}
+- mods/zfastnoise-1.0.13+1.21.jar | env={'server': 'required', 'client': 'required'}
+- mods/zoomify-2.15.2+1.21.1.jar | env={'server': 'required', 'client': 'required'}
+- mods/netherportalfix-fabric-1.21.1-21.1.3.jar | env={'server': 'required', 'client': 'required'}
+- mods/Luckys-Cozyhome-Refurnished-1.1.20.jar | env={'client': 'required', 'server': 'required'}
+- mods/iris-fabric-1.8.14-beta.1+mc1.21.1.jar | env={'server': 'required', 'client': 'required'}
+- mods/MobsBeGone-0.0.7.jar | env={'client': 'required', 'server': 'required'}
+- mods/cobblemon-additions-4.1.6.jar | env={'server': 'required', 'client': 'required'}
+- mods/sound-physics-remastered-fabric-1.21.1-1.5.1.jar | env={'client': 'required', 'server': 'required'}
+- mods/accessories_compat_layer-fabric-0.1.12+1.21.1.jar | env={'client': 'required', 'server': 'required'}
+- mods/midnightlib-1.7.5-fabric+1.21.1.jar | env={'server': 'required', 'client': 'required'}
+- mods/AdvancementPlaques-1.21.1-fabric-1.6.8.jar | env={'server': 'required', 'client': 'required'}
+- mods/xaeroworldmap-fabric-1.21.1-1.42.0.jar | env={'client': 'required', 'server': 'required'}
+- mods/architectury-13.0.8-fabric.jar | env={'client': 'required', 'server': 'required'}
+- mods/repurposed_structures-7.5.21+1.21.1-fabric.jar | env={'server': 'required', 'client': 'required'}
+- mods/ScalableLux-0.1.0.1+fabric.d0d58ab-all.jar | env={'server': 'required', 'client': 'required'}
+- mods/beautify-2.0.0+1.21.1.jar | env={'client': 'required', 'server': 'required'}
+- mods/entity_texture_features_1.21-fabric-7.1.jar | env={'server': 'required', 'client': 'required'}
+- mods/biomereplacer-2.1-hippo-fabric.jar | env={'client': 'required', 'server': 'required'}
+- mods/entity_model_features-3.2.4-1.21-fabric.jar | env={'client': 'required', 'server': 'required'}
+- mods/ImmediatelyFast-Fabric-1.6.11+1.21.1.jar | env={'client': 'required', 'server': 'required'}
+- mods/lithium-fabric-0.15.4+mc1.21.1.jar | env={'client': 'required', 'server': 'required'}
+- mods/moar-concrete-1.3.1.jar | env={'client': 'required', 'server': 'required'}
+- mods/fabric-language-kotlin-1.13.12+kotlin.2.4.0.jar | env={'client': 'required', 'server': 'required'}
+- mods/MouseTweaks-fabric-mc1.21-2.26.jar | env={'client': 'required', 'server': 'required'}
+- mods/ForgeConfigAPIPort-v21.1.6-1.21.1-Fabric.jar | env={'client': 'required', 'server': 'required'}
+- mods/athena-fabric-1.21.1-4.0.6.jar | env={'server': 'required', 'client': 'required'}
+- mods/brb-1.10.0-rc5+1.21.jar | env={'client': 'required', 'server': 'required'}
+- mods/advancementdisable-fabric-1.0.1+1.21.jar | env={'client': 'required', 'server': 'required'}
+- mods/RoughlyEnoughItems-16.0.799-fabric.jar | env={'client': 'required', 'server': 'required'}
+- mods/notenoughanimations-fabric-1.12.4-mc1.21.1.jar | env={'client': 'required', 'server': 'required'}
+- mods/resourcefullib-fabric-1.21-3.0.12.jar | env={'client': 'required', 'server': 'required'}
+- mods/Carved Wood-fabric-1.21.1-1.9.5.jar | env={'server': 'required', 'client': 'required'}
+- mods/fabric-api-0.116.13+1.21.1.jar | env={'client': 'required', 'server': 'required'}
+- mods/melody_fabric_1.0.10_MC_1.21.jar | env={'server': 'required', 'client': 'required'}
+- mods/customsplashscreen-2.2.0.jar | env={'server': 'required', 'client': 'required'}
+- mods/Searchables-fabric-1.21.1-1.0.2.jar | env={'client': 'required', 'server': 'required'}
+- mods/BetterF3-11.0.3-Fabric-1.21.1.jar | env={'client': 'required', 'server': 'required'}
+- mods/Cobbreeding-fabric-2.2.2.jar | env={'server': 'required', 'client': 'required'}
+- mods/respackopts-4.14.0+1.21.1.4.jar | env={'client': 'required', 'server': 'required'}
+- mods/packetfixer-3.3.1-1.20.5-1.21.X-merged.jar | env={'server': 'required', 'client': 'required'}
+- mods/lenientdeath-1.2.5+1.21.1.jar | env={'client': 'required', 'server': 'required'}
+- mods/better-pokedex-scanner-1.0.0.jar | env={'client': 'required', 'server': 'required'}
+- mods/NoChatRestrictions-Fabric-MC1.21.11-v1.0.0.jar | env={'client': 'required', 'server': 'required'}
+- mods/forgivingvoid-fabric-1.21.1-21.1.7.jar | env={'client': 'required', 'server': 'required'}
+- mods/owo-lib-0.12.15.4+1.21.jar | env={'server': 'required', 'client': 'required'}
+- mods/Only Bottle Caps-1.3.0.jar | env={'server': 'required', 'client': 'required'}
+- mods/accessories-fabric-1.1.0-beta.53+1.21.1.jar | env={'server': 'required', 'client': 'required'}
+- mods/fusion-1.3.5-fabric-mc1.21.jar | env={'server': 'required', 'client': 'required'}
+- mods/cobblenav-fabric-2.3.3.jar | env={'client': 'required', 'server': 'required'}
+- mods/tmcraft-1.4.18+1.7.3.jar | env={'server': 'required', 'client': 'required'}
+- mods/cobblemonraiddens-fabric-0.11.3+1.21.1.jar | env={'server': 'required', 'client': 'required'}
+
+## Resource packs (índice)
+- resourcepacks/z DO NOT ENABLE z [PlanetaCobblemon - Credits Only].zip | env={'server': 'required', 'client': 'required'}
+- resourcepacks/z DO NOT ENABLE z [LackingMons - Credits Only].zip | env={'server': 'required', 'client': 'required'}
+- resourcepacks/Cobblemon Interface Modded.zip | env={'client': 'required', 'server': 'required'}
+- resourcepacks/EeveelutionsReimagined RP.zip | env={'client': 'required', 'server': 'required'}
+- resourcepacks/Cobblemon Interface.zip | env={'server': 'required', 'client': 'required'}
+- resourcepacks/z DO NOT ENABLE z [Pokemans - Credits Only].zip | env={'server': 'required', 'client': 'required'}
+- resourcepacks/Fresh Animations.zip | env={'server': 'required', 'client': 'required'}
+- resourcepacks/z DO NOT ENABLE z [CobbleMotion - Credits Only].zip | env={'client': 'required', 'server': 'required'}
+- resourcepacks/PokeDiscs.zip | env={'client': 'required', 'server': 'required'}
+- resourcepacks/z DO NOT ENABLE z [ATM x MSD - Credits Only].zip | env={'client': 'required', 'server': 'required'}
+- resourcepacks/z DO NOT ENABLE z [CavsCobbleMons - Credits Only].zip | env={'server': 'required', 'client': 'required'}
+- resourcepacks/z DO NOT ENABLE z [Terralith - Credits Only].zip | env={'client': 'required', 'server': 'required'}
+- resourcepacks/Fresh Moves.zip | env={'server': 'required', 'client': 'required'}
+- resourcepacks/z DO NOT ENABLE z [MysticMons - Credits Only].zip | env={'server': 'required', 'client': 'required'}
+- resourcepacks/z DO NOT ENABLE z [MundialMons - Credits Only].zip | env={'client': 'required', 'server': 'required'}
+- resourcepacks/Canon PC Wallpapers.zip | env={'client': 'required', 'server': 'required'}
+- resourcepacks/Comforts Modernized.zip | env={'server': 'required', 'client': 'required'}
+- resourcepacks/z DO NOT ENABLE z [Hydro Reanimodel - Credits Only].zip | env={'server': 'required', 'client': 'required'}
+- resourcepacks/Low Fire.zip | env={'server': 'required', 'client': 'required'}
+- resourcepacks/PokeRods3D.zip | env={'server': 'required', 'client': 'required'}
+- resourcepacks/Fresh Icons.zip | env={'client': 'required', 'server': 'required'}
+- resourcepacks/z DO NOT ENABLE z [TDmon - Credits Only].zip | env={'client': 'required', 'server': 'required'}
+- resourcepacks/Emissive Cobblemon Ores.zip | env={'client': 'required', 'server': 'required'}
+- resourcepacks/z DO NOT ENABLE z [GlitchDex - Credits Only].zip | env={'server': 'required', 'client': 'required'}
+- resourcepacks/Classic Grass.zip | env={'client': 'required', 'server': 'required'}
+- resourcepacks/Original Pokemon Battle Music.zip | env={'server': 'required', 'client': 'required'}
+- resourcepacks/z DO NOT ENABLE z [E19 Minimap Icons - Credits Only].zip | env={'server': 'required', 'client': 'required'}
+- resourcepacks/FullyHisuianStarters RP.zip | env={'client': 'required', 'server': 'required'}
+- resourcepacks/z DO NOT ENABLE z [MissingMons - Credits Only].zip | env={'client': 'required', 'server': 'required'}
+- resourcepacks/JigglyRadio.zip | env={'client': 'required', 'server': 'required'}
+
+## Otros en índice
+### datapacks
+- datapacks/PokeCenterPCs-DP.zip
+### shaderpacks
+- shaderpacks/ComplementaryUnbound_r5.8.1.zip
+
+## Recursos locales disponibles
+- C:\Users\PC\Documents\Proyecto predeterminado\BabelCraft\out\cobbleverse\Cobblemon-fabric-1.7.3+1.21.1.jar
+- C:\Users\PC\Documents\Proyecto predeterminado\BabelCraft\out\cobbleverse_pack\overrides\mods\cobblemon-battle-positions-1.1.3.jar
+
+## Estructura de overrides (local, extraída)
+- config/
+  - cobbledollars/
+    - bank.json (5574 bytes)
+    - client.json (39 bytes)
+    - common.json (155 bytes)
+    - default_shop.json (2320 bytes)
+  - cobblemon/
+    - spawning/
+      - best-spawner-config.json (537 bytes)
+    - main.json (3402 bytes)
+    - starters.json (3131 bytes)
+  - cobblemon-additions/
+    - cobblemon-additions.json (360 bytes)
+  - cobblemonraiddens/
+    - blacklist.json5 (843 bytes)
+    - client.json5 (979 bytes)
+    - common.json5 (2037 bytes)
+    - conditions.json5 (459 bytes)
+    - tier_five.json5 (2267 bytes)
+    - tier_four.json5 (2226 bytes)
+    - tier_one.json5 (2136 bytes)
+    - tier_seven.json5 (2348 bytes)
+    - tier_six.json5 (2306 bytes)
+    - tier_three.json5 (2137 bytes)
+    - tier_two.json5 (2137 bytes)
+  - cobblenav/
+    - client-config.json (399 bytes)
+    - server-config.json (1095 bytes)
+  - cobbreeding/
+    - main.json (999 bytes)
+  - customsplashscreen/
+    - background.png (3828524 bytes)
+    - progressbar.png (340 bytes)
+    - progressbar_background.png (172 bytes)
+    - square_logo.png (157919 bytes)
+    - wide_logo.png (11788 bytes)
+  - defaultoptions/
+    - keybindings.txt (6120 bytes)
+    - options.txt (1844 bytes)
+    - servers.dat (20809 bytes)
+  - euphoria_patcher/
+    - .data.json (162 bytes)
+    - settings.toml (2636 bytes)
+  - fabric/
+    - indigo-renderer.properties (291 bytes)
+  - fancymenu/
+    - assets/
+      - bg_test.png (871140 bytes)
+      - cobbleverse_icon_16.png (3634 bytes)
+      - cobbleverse_icon_32.icns (115281 bytes)
+      - cobbleverse_icon_32.png (5085 bytes)
+      - cobbleverse_title.png (227564 bytes)
+      - discord_icon.png (12789 bytes)
+      - latias_latios_background.png (2913129 bytes)
+      - pokedex_menu.png (250362 bytes)
+      - slideshow_frame.png (4382 bytes)
+    - customization/
+      - cobbleverse_main.txt (68965 bytes)
+      - cobbleverse_multiplayer_screen.txt (31950 bytes)
+      - cobbleverse_pause_menu.txt (47846 bytes)
+      - cobbleverse_resourcepack_selection.txt (28388 bytes)
+    - layout_editor/
+      - widgets/
+    - slideshows/
+      - pokedex/
+    - ui_themes/
+      - cherry_blossom.json (9349 bytes)
+      - cozy_campfire.json (9347 bytes)
+      - dark.json (9329 bytes)
+      - dark_high_contrast.json (9359 bytes)
+      - light.json (9331 bytes)
+      - light_high_contrast.json (9361 bytes)
+      - pumpkin_soup.json (9345 bytes)
+      - purple_void.json (9343 bytes)
+      - spooky_season.json (9347 bytes)
+    - custom_gui_screens.txt (442 bytes)
+    - customizablemenus.txt (143 bytes)
+    - legacy_checklist.txt (42 bytes)
+    - listener_instances.txt (1344 bytes)
+    - options.txt (4553 bytes)
+    - user_variables.db (23 bytes)
+  - mega_showdown/
+    - config.json (571 bytes)
+  - particlerain/
+    - config.json (1191 bytes)
+    - particles.json (279 bytes)
+  - playerxp/
+    - playerxp.json (227 bytes)
+  - respackopts/
+    - _respackopts.conf (456 bytes)
+  - roughlyenoughitems/
+    - collapsible.json5 (1321158 bytes)
+    - config.json5 (59010 bytes)
+    - pinyin.properties (49 bytes)
+    - pinyin_double.properties (74 bytes)
+  - safepastures/
+    - safepastures.json (1272 bytes)
+  - sound_physics_remastered/
+    - occlusion.properties (4879 bytes)
+    - reflectivity.properties (4713 bytes)
+    - sound_rates.properties (78615 bytes)
+    - soundphysics.properties (5104 bytes)
+  - VillagerConfig/
+    - villagerconfig.json5 (647 bytes)
+  - xaero/
+    - lib/
+      - profiles/
+      - server_profiles/
+      - client.cfg (30 bytes)
+      - common.cfg (240 bytes)
+    - minimap/
+      - profiles/
+      - server_profiles/
+      - client.cfg (240 bytes)
+      - common.cfg (151 bytes)
+      - default_radar_categories_client.json (5642 bytes)
+      - default_radar_categories_server.json (4749 bytes)
+    - world-map/
+      - profiles/
+      - server_profiles/
+      - client.cfg (526 bytes)
+      - common.cfg (145 bytes)
+  - accessories.json5 (917 bytes)
+  - accessories_compat.json5 (224 bytes)
+  - advancementdisable.toml (72 bytes)
+  - advancementplaques.toml (3017 bytes)
+  - badoptimizations.txt (3460 bytes)
+  - beautify.json (118 bytes)
+  - betterf3.json (2527 bytes)
+  - betterthirdperson.json5 (640 bytes)
+  - biome_replacer.properties (1904 bytes)
+  - brb.toml (296 bytes)
+  - c2me.toml (8775 bytes)
+  - capture_xp.json (204 bytes)
+  - cardinal-components-api.properties (452 bytes)
+  - catchindicator-client.cfg (1107 bytes)
+  - catchrate-display.json (181 bytes)
+  - cobblecuisine.json (3918 bytes)
+  - cobblemon-battle-extras-profiles.json (100 bytes)
+  - cobblemon-battle-extras-server.json (72 bytes)
+  - cobblemon-battle-extras.json (4030 bytes)
+  - cobblemonbattlepositions.json (163 bytes)
+  - comforts-common.toml (189 bytes)
+  - comforts-server.toml (1869 bytes)
+  - continuity.json (122 bytes)
+  - customsplashscreen.json (426 bytes)
+  - defaultoptions-common.toml (1732 bytes)
+  - entity_model_features.json (1206 bytes)
+  - entity_texture_features.json (1423 bytes)
+  - entityculling.json (2228 bytes)
+  - etf_warnings.json (28 bytes)
+  - ferritecore.mixin.properties (1615 bytes)
+  - fightorflight.json5 (17137 bytes)
+  - fightorflight_moves.json5 (8197 bytes)
+  - fightorflight_visual_effect.json5 (1371 bytes)
+  - forgeconfigapiport.toml (524 bytes)
+  - forgivingvoid-common.toml (2166 bytes)
+  - global_packs.toml (1174 bytes)
+  - immediatelyfast.json (1114 bytes)
+  - infinite-music-options.json (526 bytes)
+  - interactic.json5 (1026 bytes)
+  - iris-excluded.json (31 bytes)
+  - iris.properties (302 bytes)
+  - lenientdeath.json5 (23088 bytes)
+  - lithium.properties (267 bytes)
+  - lumymon.json (310 bytes)
+  - midnightlib.json (37 bytes)
+  - mobsbegone-blacklist.json (1970 bytes)
+  - modernfix-mixins.properties (4144 bytes)
+  - modmenu.json (830 bytes)
+  - moreculling.toml (985 bytes)
+  - MouseTweaks.cfg (135 bytes)
+  - musicnotification.json (580 bytes)
+  - nethermap.toml (138 bytes)
+  - notenoughanimations.json (1630 bytes)
+  - notenoughcrashes.json (156 bytes)
+  - obc-common.toml (720 bytes)
+  - packetfixer.properties (489 bytes)
+  - PaginatedAdvancements.json5 (367 bytes)
+  - particle_core_config.toml (378 bytes)
+  - particle_core_disabled_optimizations_v2.json (1758 bytes)
+  - particular.json5 (1122 bytes)
+  - ... (+29 more)
+- datapacks/
+  - extra/
+    - COBBLEVERSE-Hoenn-DP.zip (1338585 bytes)
+    - COBBLEVERSE-Johto-DP.zip (746704 bytes)
+    - COBBLEVERSE-Sinnoh-DP.zip (1562135 bytes)
+    - Terralith-DP.zip (3112105 bytes)
+  - COBBLEVERSE - No Ender Dragon.zip (9062 bytes)
+  - COBBLEVERSE - No Hunger.zip (8925 bytes)
+  - COBBLEVERSE-DP-v30.zip (4615836 bytes)
+  - COBBLEVERSE-Loot-DP-v11.zip (147472 bytes)
+  - COBBLEVERSE-RCT-DP-v20.zip (370553 bytes)
+- licenses/
+  - Permissions/
+    - Advancement Plaques - Modpack Permission.png (232396 bytes)
+    - AllTheMons x Mega Showdown - Permission.png (42106 bytes)
+    - CobbleDollars - Permission.png (13080 bytes)
+    - Cobblemon Battle Extras - Permission.png (45272 bytes)
+    - Eeveelutions Reimagined - Permission.png (96341 bytes)
+    - Fully Hisuian Starters - Permission.png (68319 bytes)
+    - Iceberg - Modpack Permission.png (143052 bytes)
+    - MobsBeGone - Modpack Permission.png (36791 bytes)
+    - Navas ZA Megas - Permission.png (58290 bytes)
+    - OJs Animations - Permission.png (32308 bytes)
+    - Planeta Cobblemon - Permission.png (97690 bytes)
+    - Rechiseled - Modpack Permission.png (69602 bytes)
+  - Accessories - License.txt (1067 bytes)
+  - Accessories Compatibility Layer - License.txt (1067 bytes)
+  - Advancement Plaques - License.txt (13193 bytes)
+  - AdvancementDisable - License.txt (7652 bytes)
+  - AllTheMons x Mega Showdown - License.txt (6549 bytes)
+  - Architectury API - License.md (7612 bytes)
+  - Athena - License.txt (1072 bytes)
+  - BadOptimizations - License.txt (1072 bytes)
+  - Balm - License.md (1740 bytes)
+  - Beautify Refabricated - License.txt (1070 bytes)
+  - Better Beds - License.txt (1069 bytes)
+  - Better F1 - License.txt (1073 bytes)
+  - Better Nether Map - License.txt (1063 bytes)
+  - Better Recipe Book - License.txt (1069 bytes)
+  - BetterF3 - License.txt (1083 bytes)
+  - Biome Replacer - License.txt (1066 bytes)
+  - Canon PC Wallpapers - License.txt (16725 bytes)
+  - Carved Wood - License.txt (1674 bytes)
+  - CavsCobblemon - License.txt (17404 bytes)
+  - Cloth Config API - License.md (7680 bytes)
+  - CobbleCuisine - License.txt (1080 bytes)
+  - CobbleFurnies - License.txt (1884 bytes)
+  - Cobblemon - License.txt (16725 bytes)
+  - Cobblemon 3D Poke Rods - License.txt (19345 bytes)
+  - Cobblemon Additions - License.txt (1080 bytes)
+  - Cobblemon Better Pokemon Scanner - License.txt (1056 bytes)
+  - Cobblemon Capture XP - License.txt (1080 bytes)
+  - Cobblemon Catch Rate Display - License.txt (1055 bytes)
+  - Cobblemon Emissive Ores - License.txt (15319 bytes)
+  - Cobblemon Fight or Flight - License.txt (1080 bytes)
+  - Cobblemon Interface - License.md (1068 bytes)
+  - Cobblemon Interface Modded - License.md (1068 bytes)
+  - Cobblemon Journey Mounts - License.txt (1080 bytes)
+  - Cobblemon Mega Showdown - License.txt (6473 bytes)
+  - Cobblemon Pasture Loot - License.md (34353 bytes)
+  - Cobblemon PlayerXP - License.txt (1080 bytes)
+  - Cobblemon Pokenav - License.txt (16951 bytes)
+  - Cobblemon Raid Dens - License.txt (1065 bytes)
+  - Cobblemon SafePastures - License.txt (1080 bytes)
+  - Cobblemon Tim Core - License.txt (1072 bytes)
+  - Cobbreeding - License.txt (1103 bytes)
+  - Comforts - License.txt (1007 bytes)
+  - Comforts Modernized - License.txt (41819 bytes)
+  - Complementary Shaders - License.txt (4758 bytes)
+  - Concurrent Chunk Management Engine - License.txt (1078 bytes)
+  - Continuity - License.txt (7652 bytes)
+  - Controlling - License.txt (1062 bytes)
+  - Custom Splash Screen - License.txt (1069 bytes)
+  - Debugify - License.txt (7652 bytes)
+  - Default Options - License.md (1740 bytes)
+  - E19 Cobblemon Minimap Icons - License.txt (15319 bytes)
+  - Eeveelutions Reimagined - License.txt (19346 bytes)
+  - Entity Culling - License.txt (988 bytes)
+  - Entity Model Features - License.txt (43482 bytes)
+  - Entity Texture Features - License.txt (7650 bytes)
+  - Euphoria Patches - License.txt (16725 bytes)
+  - Fabric API - License.txt (11357 bytes)
+  - Fabric Language Kotlin - License.txt (11356 bytes)
+  - FancyMenu - License.md (5313 bytes)
+  - Fast Noise - License.txt (16727 bytes)
+  - FerriteCore - License.txt (1065 bytes)
+  - Forge Config API Port - License.md (16725 bytes)
+  - Forgiving Void - License.md (1740 bytes)
+  - Fresh Animations - License.txt (2057 bytes)
+  - Fresh Moves - License.txt (20848 bytes)
+  - Fully Hisuian Starters - License.md (67 bytes)
+  - GeckoLib - License.txt (1065 bytes)
+  - GlitchDex - License.txt (1080 bytes)
+  - Handcrafted - License.txt (2054 bytes)
+  - Highlight - License.md (1073 bytes)
+  - Huge Structure Blocks - License.txt (7652 bytes)
+  - Hydro Reanimodel Pack - License.txt (17404 bytes)
+  - Iceberg - License.txt (13232 bytes)
+  - ImmediatelyFast - License.txt (7651 bytes)
+  - Interactic - License.txt (1072 bytes)
+  - Iris Shaders - License.txt (7651 bytes)
+  - Konkrete - License.txt (10755 bytes)
+  - Krypton - License.txt (7652 bytes)
+  - LackingMons - License.txt (15319 bytes)
+  - ... (+67 more)
+- mods/
+  - cobblemon-battle-positions-1.1.3.jar (58572 bytes)
+- resourcepacks/
+  - ATMxMSD RP.zip (4290151 bytes)
+  - CavsCobbleMons RP.zip (194006 bytes)
+  - Cobblemon Interface Modded.zip.rpo (2 bytes)
+  - Cobblemon Interface.zip.rpo (75 bytes)
+  - CobbleMotion RP.zip (2753346 bytes)
+  - COBBLEVERSE RCTmod RP.zip (5214902 bytes)
+  - COBBLEVERSE RP.zip (2013912 bytes)
+  - COBBLEVERSE Soundtrack.zip (179498515 bytes)
+  - E19 Cobblemon Minimap Icons.zip (10674276 bytes)
+  - GlitchDex RP.zip (196701 bytes)
+  - HydroReanimodel RP.zip (1221200 bytes)
+  - LackingMons RP.zip (51067 bytes)
+  - MissingMons RP.zip (201678 bytes)
+  - MundialMons RP.zip (1041048 bytes)
+  - MysticMons RP.zip (59152 bytes)
+  - OJsAnimations RP.zip (88853 bytes)
+  - PlanetaCobblemon RP.zip (138557 bytes)
+  - Pokemans RP.zip (562340 bytes)
+  - TDmon RP.zip (227765 bytes)
+- shaderpacks/
+  - COBBLEVERSE - Shaders/
+    - shaders/
+      - lang/
+      - lib/
+      - palettes/
+      - program/
+      - world-1/
+      - world0/
+      - world1/
+      - block.properties (2407187 bytes)
+      - colorwheel.properties (824 bytes)
+      - dimension.properties (4385 bytes)
+      - entity.properties (13693 bytes)
+      - item.properties (175881 bytes)
+      - pack.json (354 bytes)
+      - pack.png (13075 bytes)
+      - shaders.properties (79323 bytes)
+    - .gitignore (5 bytes)
+    - addedMods.md (49320 bytes)
+    - ComplementaryLicense.txt (5596 bytes)
+    - Credits.txt (41 bytes)
+    - EuphoriaPatchesLicense.txt (4004 bytes)
+    - InformationEuphoriaPatches.md (2579 bytes)
+    - Made for Complementary Shaders r5.7.1.txt (90 bytes)
+  - COBBLEVERSE - Shaders (High Quality)/
+    - shaders/
+      - lang/
+      - lib/
+      - palettes/
+      - program/
+      - world-1/
+      - world0/
+      - world1/
+      - block.properties (2407187 bytes)
+      - colorwheel.properties (824 bytes)
+      - dimension.properties (4385 bytes)
+      - entity.properties (13693 bytes)
+      - item.properties (175881 bytes)
+      - pack.json (354 bytes)
+      - pack.png (13075 bytes)
+      - shaders.properties (79323 bytes)
+    - .gitignore (5 bytes)
+    - addedMods.md (49320 bytes)
+    - ComplementaryLicense.txt (5596 bytes)
+    - Credits.txt (41 bytes)
+    - EuphoriaPatchesLicense.txt (4004 bytes)
+    - InformationEuphoriaPatches.md (2579 bytes)
+    - Made for Complementary Shaders r5.7.1.txt (90 bytes)
+  - COBBLEVERSE - Shaders (High Quality).txt (1722 bytes)
+  - COBBLEVERSE - Shaders.txt (1676 bytes)
+- COBBLEVERSE - Third-Party Licenses.pdf (582315 bytes)
+- servers.dat (20809 bytes)
+
+## Clasificación inicial de convertibilidad (Cobbleverse)
+- **Alta (declarativo/visual)**: resource packs (texturas, modelos, animaciones, lang, sonidos), datapacks de recetas/loot/tags/advancements parciales, configs declarativas como referencia.
+- **Media (parcial/adaptable)**: datapacks con funciones/worldgen/estructuras (mucho puede quedar como residuo o requerir adaptación manual), ítems/bloques de mods addon si hay assets.
+- **Baja/No portable directo**: lógica Java de mods (bytecode), sistemas de batalla/captura/IA/economía/UI custom, integraciones entre mods, scripts/side mods cliente/servidor.
+
+## Prioridad sugerida para traducción
+1. **Base Cobblemon**: mod jar principal + resource packs/datapacks de Cobbleverse que lo extienden.
+2. **Contenido Cobblemon-related**: resourcepacks y datapacks en overrides (modelos extra, animaciones, loot/recetas/tags, textos).
+3. **Mods addon de Cobblemon con assets declarativos** (si se descargan/disponen jars): ítems/bloques/entidades visuales cuando aplique.
+4. **Mecánicas**: Poké Balls, ítems y comportamientos básicos en Bedrock (aproximaciones), documentando límites.
+5. **Resto del modpack**: evaluar mod por mod; la mayoría de mods de rendimiento/UI/libs/Java-lógicos serán residuo o no convertibles.
