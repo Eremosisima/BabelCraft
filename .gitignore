@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+
+# Virtual envs
+.venv/
+venv/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Generated outputs and large artifacts
+out/
+*.mcaddon
+*.mcpack
+*.zip
+!tests/fixtures/**/*.zip
+
+# Local test outputs
+test_output/
+smoke_out*/
+
+# Logs/temp
+*.log
