@@ -344,58 +344,52 @@ def _sanitize_particle_effects(data, note) -> dict | None:
 
 
 def _replace_invalid_molang(s: str) -> str:
-    """Reemplaza queries de Molang no soportados con valores por defecto.
-    
-    Si el resultado es una expresión malformada, reemplaza toda la expresión con "0".
+    """Reemplaza queries de Molang no soportados y normaliza la expresión.
+
+    Usa analizador estático (sintaxis/tokens) cuando es posible para
+    evitar expresiones truncadas o inválidas tras el reemplazo.
     """
     if not s:
         return s
-    
+
+    try:
+        from .static_analysis.molang import analyze_molang
+
+        analysis = analyze_molang(s)
+        if analysis.unsupported_queries or analysis.sanitized != s:
+            # Si detectó queries no portables o hizo correcciones, usar resultado sanitizado.
+            if analysis.unsupported_queries or not _legacy_is_valid_molang(_clean_molang_expression(s)):
+                return analysis.sanitized
+    except Exception:
+        pass
+
+    # Fallback legacy
     result = s
     for pattern in _INVALID_MOLANG_PATTERNS:
         result = re.sub(pattern, "0", result, flags=re.IGNORECASE)
-    
     result = _clean_molang_expression(result)
-    
-    # Validar que la expresión resultante sea válida
-    if not _is_valid_molang(result):
-        # Si es inválida, reemplazar toda la expresión con "0"
+    if not _legacy_is_valid_molang(result):
         return "0"
-    
     return result
 
 
-def _is_valid_molang(s: str) -> bool:
-    """Valida que una expresión Molang esté bien formada.
-    
-    Verifica:
-    - Paréntesis balanceados
-    - Funciones con número correcto de parámetros
-    - No hay operadores sin operandos
-    """
+def _legacy_is_valid_molang(s: str) -> bool:
+    """Validación legacy de Molang (compatibilidad)."""
     if not s or s.strip() == "":
         return False
-    
-    # Verificar paréntesis balanceados
     open_count = s.count("(")
     close_count = s.count(")")
     if open_count != close_count:
         return False
-    
-    # Verificar que no haya operadores al final o inicio (excepto - para negativos)
     stripped = s.strip()
     if stripped.endswith(("+", "*", "/")):
         return False
     if stripped.startswith(("+", "*", "/")):
         return False
-    
-    # Verificar que math.clamp tenga 3 parámetros
     clamp_pattern = r'math\.clamp\s*\([^)]+\)'
     for match in re.finditer(clamp_pattern, s, re.IGNORECASE):
         clamp_call = match.group(0)
-        # Contar parámetros (separados por comas, pero respetando paréntesis anidados)
         params_str = clamp_call[clamp_call.index("(")+1:clamp_call.rindex(")")]
-        # Contar comas fuera de paréntesis anidados
         depth = 0
         comma_count = 0
         for char in params_str:
@@ -405,23 +399,25 @@ def _is_valid_molang(s: str) -> bool:
                 depth -= 1
             elif char == ',' and depth == 0:
                 comma_count += 1
-        # math.clamp necesita exactamente 3 parámetros (2 comas)
         if comma_count != 2:
             return False
-    
-    # Verificar que no haya números pegados a funciones (ej: "3math.sin")
     if re.search(r'\d+[a-zA-Z_]', s):
         return False
-    
-    # Verificar que no haya operadores consecutivos sin operandos (excepto negativos)
-    # Buscar patrones como "+*", "-/", "*+", etc.
     if re.search(r'[\+\-\*\/][\+\*\/]', s):
         return False
-    # Buscar patrones como "*-" al inicio o después de "("
     if re.search(r'[\(\s]\*-', s):
         return False
-    
     return True
+
+
+def _is_valid_molang(s: str) -> bool:
+    """Valida expresión Molang; usa analizador estático con fallback legacy."""
+    try:
+        from .static_analysis.molang import analyze_molang
+
+        return analyze_molang(s).sanitized.strip() != "" and analyze_molang(s).valid
+    except Exception:
+        return _legacy_is_valid_molang(s)
 
 
 def _clean_molang_expression(expr: str) -> str:

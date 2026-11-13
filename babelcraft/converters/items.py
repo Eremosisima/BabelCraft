@@ -140,6 +140,43 @@ def convert(ctx) -> None:
         if held:
             components["minecraft:hand_equipped"] = True
 
+        # Mejoras específicas (Cobblemon): clasificación y componentes aproximados
+        # para ítems/poké balls, manteniendo overrides del usuario como prioridad.
+        if _is_cobblemon_context(mod):
+            classification = _classify_cobblemon_item(name)
+            components["minecraft:icon"] = {"textures": {"default": shortname}}
+            components["minecraft:display_name"] = {"value": f"item.{ns}.{name}.name"}
+            components["minecraft:max_stack_size"] = classification.get("max_stack_size", 64)
+            if classification.get("hand_equipped") or held:
+                components["minecraft:hand_equipped"] = True
+            if classification.get("allow_off_hand", True):
+                components["minecraft:allow_off_hand"] = True
+            if classification.get("food"):
+                components["minecraft:food"] = classification["food"]
+                components["minecraft:use_modifiers"] = {
+                    "use_duration": classification.get("use_duration", 1.6),
+                    "movement_modifier": 0.35,
+                }
+                components["minecraft:use_animation"] = classification.get("use_animation", "eat")
+            if classification.get("throwable"):
+                components["minecraft:throwable"] = {
+                    "do_swing_animation": True,
+                    "launch_power_scale": 1.0,
+                    "max_draw_duration": 0.0,
+                    "max_launch_power": 1.0,
+                    "min_draw_duration": 0.0,
+                    "scale_power_by_draw_duration": False,
+                }
+                components["minecraft:projectile"] = {
+                    "minimum_critical_power": 1.25,
+                    "projectile_entity": "minecraft:snowball",
+                }
+                components["minecraft:use_animation"] = classification.get("use_animation", "bow")
+                components["minecraft:cooldown"] = classification.get("cooldown", {"category": "cobblemon_pokeball", "duration": 1.0})
+            e.note("mecánicas Cobblemon aplicadas (clasificación heurística/estática)")
+        else:
+            components["minecraft:icon"] = shortname
+
         # Overrides del usuario (valores sacados del código fuente del mod).
         ov = ctx.overrides.item(ident)
         for key, value in ov.items():
@@ -154,10 +191,12 @@ def convert(ctx) -> None:
         if display:
             components["minecraft:display_name"] = {"value": f"item.{ns}:{name}"}
             writer.add_lang(ctx.opts.lang_out, f"item.{ns}:{name}", display)
+        elif _is_cobblemon_context(mod):
+            writer.add_lang(ctx.opts.lang_out, f"item.{ns}.{name}.name", name.replace("_", " ").strip().title())
 
-        menu = ctx.overrides.menu.get(ident, "items")
+        menu = ctx.overrides.menu.get(ident, ("equipment" if _is_cobblemon_context(mod) and _classify_cobblemon_item(name).get("kind") in {"pokeball","medicine","utility"} else "items"))
         doc = {
-            "format_version": versions.ITEM_HELD if held else versions.ITEM,
+            "format_version": "1.20.50" if _is_cobblemon_context(mod) else (versions.ITEM_HELD if held else versions.ITEM),
             "minecraft:item": {
                 "description": {
                     "identifier": ident,
@@ -207,6 +246,67 @@ def _client_item_model_ref(data) -> str | None:
         elif isinstance(cur, list):
             stack.extend(v for v in cur if isinstance(v, (dict, list)))
     return None
+
+
+def _is_cobblemon_context(mod) -> bool:
+    ns = (getattr(mod, "namespace", "") or "").lower()
+    name = (getattr(mod, "name", "") or "").lower()
+    haystack = f"{ns} {name}"
+    if "cobblemon" in haystack:
+        return True
+    try:
+        for _ in mod.source.glob("assets/cobblemon/"):
+            return True
+    except Exception:
+        pass
+    return False
+
+
+def _classify_cobblemon_item(item_name: str) -> dict:
+    """Clasificador heurístico/estático para ítems Cobblemon en pipeline general."""
+    n = item_name.lower()
+    info = {
+        "kind": "generic",
+        "max_stack_size": 64,
+        "hand_equipped": False,
+        "allow_off_hand": True,
+        "throwable": False,
+        "food": None,
+        "use_animation": None,
+        "use_duration": None,
+        "cooldown": None,
+    }
+    if "ball" in n or "pokeball" in n:
+        info.update({
+            "kind": "pokeball",
+            "hand_equipped": True,
+            "throwable": True,
+            "use_animation": "bow",
+            "cooldown": {"category": "cobblemon_pokeball", "duration": 1.0},
+            "max_stack_size": 16 if any(x in n for x in ("master", "origin", "cherish", "beast")) else 64,
+        })
+        return info
+    if "berry" in n or n in {"leftovers", "lava_cookie", "old_gateau", "casteliacone", "big_malasada", "lumiose_galette", "rage_candy_bar"}:
+        info.update({
+            "kind": "food",
+            "food": {"nutrition": 2, "saturation_modifier": "low", "can_always_eat": True},
+            "use_animation": "eat",
+            "use_duration": 1.6,
+        })
+        return info
+    if any(x in n for x in ("potion", "heal", "revive", "antidote", "burn_heal", "ice_heal", "paralyze_heal", "awakening", "full_restore", "ether", "elixir", "fresh_water", "soda_pop", "lemonade", "moomoo_milk")):
+        info.update({"kind": "medicine", "use_animation": "drink", "use_duration": 1.6})
+        return info
+    if any(x in n for x in ("candy", "rare_candy", "exp_", "vitamin", "protein", "iron", "calcium", "zinc", "carbos", "hp_up", "pp_", "feather")):
+        info.update({"kind": "enhancement", "use_animation": "eat", "use_duration": 1.6})
+        return info
+    if n.startswith("tm_") or n.startswith("hm_") or n.startswith("tr_"):
+        info.update({"kind": "move", "max_stack_size": 1})
+        return info
+    if any(x in n for x in ("pokedex", "rod")):
+        info.update({"kind": "utility", "hand_equipped": True, "max_stack_size": 1})
+        return info
+    return info
 
 
 def _placeholder_png(name: str, size: int = 16):
