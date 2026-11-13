@@ -321,6 +321,20 @@ def _load_animation_data(
                         anim_paths.append(path)
 
     anims_doc = sanitize_animations(raw_anims, anim_notes) if raw_anims else None
+    # Defensa extra: eliminar animaciones vacías (sin huesos ni efectos)
+    if anims_doc and isinstance(anims_doc.get("animations"), dict):
+        cleaned = {}
+        for aname, abody in anims_doc["animations"].items():
+            if not isinstance(abody, dict):
+                continue
+            has_bones = isinstance(abody.get("bones"), dict) and bool(abody.get("bones"))
+            has_effects = any(isinstance(abody.get(k), dict) and abody.get(k) for k in ("particle_effects", "sound_effects"))
+            if has_bones or has_effects:
+                cleaned[aname] = abody
+        if cleaned:
+            anims_doc["animations"] = cleaned
+        else:
+            anims_doc = None
     alias_map: dict[str, str] = {}
     by_name: dict[str, str] = {}
     ctrls_doc = None
