@@ -590,20 +590,24 @@
   - `resourcepacks/` (16): Cobblemon Interface, Cobblemon Interface Modded, EeveelutionsReimagined RP, Fresh Animations, PokeDiscs, Fresh Moves, Canon PC Wallpapers, Comforts Modernized, Low Fire, PokeRods3D, Fresh Icons, Emissive Cobblemon Ores, Classic Grass, Original Pokemon Battle Music, FullyHisuianStarters RP, JigglyRadio.
   - `datapacks/` (1): PokeCenterPCs-DP.
 
-### Conversión Cobbleverse (ejecución corregida)
-- Fuente fusionada: Cobblemon jar + overrides RPs/DPs (y soporte para downloads en siguientes pasadas).
+### Conversión Cobbleverse (última ejecución, con descargas + fixes + mejoras de pipeline)
+- Fuente fusionada: Cobblemon jar + overrides RPs/DPs + `downloads/resourcepacks|datapacks|mods` (assets/data) verificados.
 - Addon generado: `out/cobbleverse_converted/cobbleverse.mcaddon` (`namespace=cobblemon`, `loader=fabric`).
 - Archivos: **3554 BP / 5245 RP**.
 - Cobertura: **4595 convertidos, 1921 adaptados, 33895 residuos, 40411 total**.
 - Validador: **12 errores, 1390 avisos**.
-- Errores observados:
-  - `ref.animation` en attachables `cobblemon_gilded_chest` y `cobblemon_gimmighoul_chest` (animaciones de attachable no encontradas en el archivo esperado).
-  - `anim.bones` en `rp/animations/cobblemon_blastoise.animation.json` para `animation.blastoise.ride_jetstream_idle/fly` (quedaron vacías en esa corrida).
+- Grafos generados: `out/cobbleverse_converted/graphs/` (`coverage.md/json`, `references.md`, `references_summary.json`, `references_missing.json`).
+  - Referencias faltantes detectadas: **10 animaciones** (attachables de cofres) y **1 textura** (`textures/misc/enchanted_item_glint`).
+  - Errores validador persistentes: 10 `ref.animation` (attachables `gilded_chest`/`gimmighoul_chest`) + 2 `anim.bones` (`blastoise` ride_jetstream idle/fly vacías).
 
 ### Correcciones incorporadas (para siguientes pasadas)
-- `babelcraft/animkit.py`: descarta animaciones que quedan sin huesos ni efectos tras sanitización; mejora en sanitización de `particle_effects` y degradación segura de `catmullrom`.
-- `babelcraft/converters/models.py`: animaciones de attachable en archivo separado (`*.attachable.animation.json`) para evitar colisiones con animaciones de entidad/bloque.
+- `babelcraft/animkit.py`: sanitización reforzada con analizador estático de Molang; descarta animaciones sin huesos/efectos tras sanitización; degradación segura de `catmullrom`.
+- `babelcraft/static_analysis/molang.py`: tokenización/validación/sanitización de expresiones Molang (base para clasificación y depuración).
+- `babelcraft/converters/models.py`: animaciones de attachable en archivo separado (`*.attachable.animation.json`) para evitar colisiones.
+- `babelcraft/converters/entities.py`: defensa adicional para no emitir animaciones vacías.
+- `babelcraft/converters/items.py`: clasificación/mejoras de ítems Cobblemon integradas al pipeline general (incl. Poké Balls lanzables aproximadas, consumibles, categorías).
 - `convert_cobbleverse.py`: merge con overrides + downloads y detección de identidad corregida.
+- `generate_conversion_graphs.py`: generación de grafos de cobertura y referencias desde reporte/addon.
 
 ### Dependencias/procedencia relevantes (nueva estructura)
 - **Cobblemon (base)** → `BabelCraft converter` → BP/RP addon (entidades, modelos, animaciones, ítems básicos, recetas/loot parciales).
