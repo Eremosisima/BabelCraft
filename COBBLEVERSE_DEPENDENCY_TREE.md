@@ -565,3 +565,53 @@
 3. **Mods addon de Cobblemon con assets declarativos** (si se descargan/disponen jars): ítems/bloques/entidades visuales cuando aplique.
 4. **Mecánicas**: Poké Balls, ítems y comportamientos básicos en Bedrock (aproximaciones), documentando límites.
 5. **Resto del modpack**: evaluar mod por mod; la mayoría de mods de rendimiento/UI/libs/Java-lógicos serán residuo o no convertibles.
+
+---
+
+## Estado actual y estructura nueva (actualización de grafo/procedencia)
+
+### Herramientas y scripts añadidos
+- `convert_cobbleverse.py`: merge + conversión de mejor esfuerzo del pack.
+  - Base: `out/cobbleverse/Cobblemon-fabric-1.7.3+1.21.1.jar` (`assets/`, `data/`).
+  - Overlays aplicados: `out/cobbleverse_pack/overrides/resourcepacks/*.zip`, `overrides/datapacks/**/*.zip`.
+  - Overlays descargados incorporables: `out/cobbleverse_pack/downloads/resourcepacks/*.zip`, `downloads/datapacks/**/*.zip`, y `assets/data` extraídos de `downloads/mods/*.jar`.
+  - Fuerza identidad del merge con `fabric.mod.json` (`id=cobblemon`, `name=Cobbleverse`) para evitar detecciones erróneas por namespaces ajenos.
+  - Salida: `out/cobbleverse_converted/` (fuente fusionada en `out/cobbleverse_merged_source/`).
+- `download_cobbleverse_assets.py`: descarga selectiva desde `modrinth.index.json`.
+  - Seguridad: solo `https://cdn.modrinth.com/`, verificación SHA-512/SHA-1 y tamaño, eliminación en fallo.
+  - Selección: prioriza mods del ecosistema/contenido, resource packs y datapacks; omite perf/UI/libs/shaderpacks/credits-only.
+- `generate_limited_addon.py`: flujo rápido de validación Cobblemon (20 entidades) + conversión mejorada de ítems.
+- `babelcraft/mechanics/` (scaffold + hook en pipeline): `base.py`, `cobblemon.py`, `cobblemon_items.py` (resolución de texturas por `layer0`/subcarpetas, clasificación de ítems, Poké Balls lanzables como aproximación).
+
+### Descargas verificadas (estado local)
+- Índice: 165 entradas. Presentes/verificados antes: 1 (`Cobblemon-fabric-1.7.3+1.21.1.jar`). Descargados: **54**. Fallidos/hash-fail: **0**.
+- Ubicación: `out/cobbleverse_pack/downloads/`
+  - `mods/` (37): CobbleDollars, CobbleFurnies, CobbleverseBadges, LegendaryMonuments, Luckys-Cozyhome-Refurnished, LumyMon, LumyREI, MoreCobblemonTweaks, SafePastures, VanillaBackport, beautify, better-pokedex-scanner, biomereplacer, capturexp, cobblecuisine, cobblemon-additions, cobblemon-battle-extras, cobblemonraiddens, cobblenav, comforts, fightorflight, handcrafted, huge-structure-blocks, mega_showdown, moar-concrete, pastureLoot, pokeblocks, rctapi, rctmod, rechiseled, repurposed_structures, sophisticatedbackpacks, sophisticatedcore, sophisticatedstorage, tmcraft, toms_storage, waystones.
+  - `resourcepacks/` (16): Cobblemon Interface, Cobblemon Interface Modded, EeveelutionsReimagined RP, Fresh Animations, PokeDiscs, Fresh Moves, Canon PC Wallpapers, Comforts Modernized, Low Fire, PokeRods3D, Fresh Icons, Emissive Cobblemon Ores, Classic Grass, Original Pokemon Battle Music, FullyHisuianStarters RP, JigglyRadio.
+  - `datapacks/` (1): PokeCenterPCs-DP.
+
+### Conversión Cobbleverse (ejecución corregida)
+- Fuente fusionada: Cobblemon jar + overrides RPs/DPs (y soporte para downloads en siguientes pasadas).
+- Addon generado: `out/cobbleverse_converted/cobbleverse.mcaddon` (`namespace=cobblemon`, `loader=fabric`).
+- Archivos: **3554 BP / 5245 RP**.
+- Cobertura: **4595 convertidos, 1921 adaptados, 33895 residuos, 40411 total**.
+- Validador: **12 errores, 1390 avisos**.
+- Errores observados:
+  - `ref.animation` en attachables `cobblemon_gilded_chest` y `cobblemon_gimmighoul_chest` (animaciones de attachable no encontradas en el archivo esperado).
+  - `anim.bones` en `rp/animations/cobblemon_blastoise.animation.json` para `animation.blastoise.ride_jetstream_idle/fly` (quedaron vacías en esa corrida).
+
+### Correcciones incorporadas (para siguientes pasadas)
+- `babelcraft/animkit.py`: descarta animaciones que quedan sin huesos ni efectos tras sanitización; mejora en sanitización de `particle_effects` y degradación segura de `catmullrom`.
+- `babelcraft/converters/models.py`: animaciones de attachable en archivo separado (`*.attachable.animation.json`) para evitar colisiones con animaciones de entidad/bloque.
+- `convert_cobbleverse.py`: merge con overrides + downloads y detección de identidad corregida.
+
+### Dependencias/procedencia relevantes (nueva estructura)
+- **Cobblemon (base)** → `BabelCraft converter` → BP/RP addon (entidades, modelos, animaciones, ítems básicos, recetas/loot parciales).
+- **Overrides Cobbleverse (RP/DP)** → merge por prioridad → enriquece assets y datos declarativos.
+- **Descargas Modrinth (verificadas)** → `downloads/*` → (pendiente de incorporar en re-conversión completa) amplían cobertura de mods/RPs/DPs del ecosistema.
+- **Mecánicas específicas** → `babelcraft.mechanics` (hook) + `generate_limited_addon.py` (prototipo) → mejoras de ítems/Poké Balls; pendiente integración completa al pipeline general para Cobbleverse.
+
+### Riesgos y notas
+- Muchos mods del pack son lógica Java/no portables; incluso con jars descargados, gran parte será residuo.
+- Validar siempre en Bedrock (content log) tras cada regeneración; errores de Molang/refs pueden reaparecer por overlays nuevos.
+- Mantener principio “nunca fingir”: mecánicas complejas (captura/batalla/IA) deben declararse como aproximaciones o residuo documentado.
